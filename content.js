@@ -1,4 +1,4 @@
-const url = 'https://purify-295716.oa.r.appspot.com/?txt=';
+const apiUrl = 'https://purify-295716.oa.r.appspot.com/';
     
 const options = {
     method: 'GET',
@@ -15,9 +15,7 @@ const appendFeedback = (div) => {
     a1.innerText = 'Agree'
     var a2 = document.createElement('a')
     a2.innerText = 'Disagree'
-    
-    // a1.setAttribute('data-post-id', "")
-    // a1.setAttribute('data-post-id', "")
+
     a1.setAttribute("style", "float:right; color: #d3d3d3;    padding: 5px;    font-weight: bold;")
     a2.setAttribute("style", "float:right;margin-right: 10px;color: #d3d3d3;    padding: 5px;    font-weight: bold;")
     div.appendChild(a2)
@@ -26,12 +24,14 @@ const appendFeedback = (div) => {
     a1.onclick = (e) => feedback(e, 'agree')
     a2.onclick = (e) => feedback(e, 'do_not_agree')
 
-    // a0.onclick = (e) => feedback(e, 'agree')
-    // a0.innerText = '?'
-    // a0.setAttribute('class', 'pur-help')
-    // div.appendChild(a0)
-
     return div
+}
+
+const drowTag = (title, div) => {
+    var kk = document.createElement('div')
+    kk.setAttribute("class", "pur-tag")
+    kk.innerText = title
+    div.appendChild(kk)
 }
 
 const showPredictions = (pred, post) => {
@@ -42,36 +42,16 @@ const showPredictions = (pred, post) => {
     div.setAttribute("class", "pur-cont")
     appendFeedback(div)
     
-    if(res[1] > 3.5) {
-        var kk = document.createElement('div')
-        kk.setAttribute("class", "pur-tag")
-        kk.innerText = 'Discrediting'
-        div.appendChild(kk)
-    }
-    if(res[2] > 3.5) {
-        var kk = document.createElement('div')
-        kk.setAttribute("class", "pur-tag")
-        kk.innerText = 'Ideologized Propaganda'
-        div.appendChild(kk)
-    }
-    if(res[3] > 3.5) {
-        var kk = document.createElement('div')
-        kk.setAttribute("class", "pur-tag")
-        kk.innerText = 'False Media'
-        div.appendChild(kk)
-    }
-    if(res[4] > 3.5) {
-        var kk = document.createElement('div')
-        kk.setAttribute("class", "pur-tag")
-        kk.innerText = 'False Supporting'
-        div.appendChild(kk)
-    }
-    if(res[4] > 3.5) {
-        var kk = document.createElement('div')
-        kk.setAttribute("class", "pur-tag")
-        kk.innerText = 'Government Propaganda'
-        div.appendChild(kk)
-    }
+    if(res[1] > 3.5) drowTag('Discrediting', div)
+        
+    if(res[2] > 3.5) drowTag('Ideologized Propaganda', div)
+        
+    if(res[3] > 3.5) drowTag('False Media', div)
+        
+    if(res[4] > 3.5) drowTag('False Supporting', div)
+        
+    if(res[4] > 3.5) drowTag('Government Propaganda', div)
+        
 
     post.parentElement.parentElement.parentElement.children[1].appendChild(div)
 }
@@ -82,7 +62,7 @@ class PostClass{
         posts.push(this)
         this.posdDom = posdDom;
         this.posdDom.classList.add('pure')
-        fetch(url + this.posdDom.innerText, options)
+        fetch(apiUrl + '?txt='+ this.posdDom.innerText, options)
             .then(res => res.json())
             .then(res => showPredictions(res, this.posdDom));
     }
