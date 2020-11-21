@@ -1,0 +1,52 @@
+.pur-tag{
+    padding: 5px 8px; 
+    color: var(--primary-text); 
+    padding-left: 15px;
+    display: inline-block; 
+    border-radius: 7px; 
+    margin-right: 5px; 
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-weight: bold;
+    background-color: var(--secondary-button-background);
+    position: relative;
+}
+
+.pur-tag::after{
+    content: '';
+    position: absolute;
+    left:5px;
+    width:7px;
+    height:7px;
+    border-radius:100%;
+    background-color: #f02849;
+    top: 9px;
+}
+
+.pur-cont{
+    right: 0;
+    min-height: 22px;
+    top: 10px;
+    padding: 7px 0 1px 0;
+    margin: 0px 16px 8px 16px;
+    /* border-top: 1px solid var(--divider); */
+    /* border-bottom: 1px solid var(--divider); */
+}
+
+.pur-help{
+    float:right; 
+    background-color: var(--secondary-button-background);
+    color: var(--primary-text); 
+    font-weight: bold;
+    border-radius: 100%;
+    padding: 5px;
+    width: 10px;
+    height: 10px;
+    line-height: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.pur-help:hover{
+    background-color: var(--hover-overlay);
+}
