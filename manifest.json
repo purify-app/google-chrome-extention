@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "purify",
-    "version": "3",
+    "version": "3.1",
     "web_accessible_resources": [
       "sw.js"
     ],
@@ -11,7 +11,7 @@
           "https://www.facebook.com/*"
         ],
         "js": [
-          "content.js"
+           "db.js", "hash-proto.js", "observe.js", "api.js", "post-class.js", "content.js", "dom.js", "tfjs.js", "toxicity.js"
         ],
         "css": [
           "ui.css"

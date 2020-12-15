@@ -10,6 +10,7 @@
     font-weight: bold;
     background-color: var(--secondary-button-background);
     position: relative;
+    text-transform: capitalize;
 }
 
 .pur-tag::after{
