@@ -14,7 +14,7 @@ const predictKa = async (posts) => new Promise(r => {
     ).then(r)
 })
 
-
+//asdasd
 
 const feedback = async (e, feedback) => {
     e.target.parentElement.querySelectorAll('a')[1].innerText = 'Thanks for your feedback'
